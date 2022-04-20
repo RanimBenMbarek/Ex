@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/darkly/bootstrap.min.css">
+    <title>{{ controller_name }}</title>
+</head>
+<body>
+<div>
+    {% for value in app.session.flashBag.get('welcome') %}
+        <div class="alert alert-info">
+            {{ value }}
+        </div>
+    {% endfor %}
+    {% for value in app.session.flashBag.get('warning') %}
+        <div class="alert alert-warning">
+            {{ value }}
+        </div>
+    {% endfor %}
+    {% for value in app.session.flashBag.get('success') %}
+        <div class="alert alert-success">
+            {{ value }}
+        </div>
+    {% endfor %}
+    {% for value in app.session.flashBag.get('error') %}
+        <div class="alert alert-warning">
+            {{ value }}
+        </div>
+    {% endfor %}{% for value in app.session.flashBag.get('erreur') %}
+        <div class="alert alert-warning">
+            {{ value }}
+        </div>
+    {% endfor %}
+    <h1>Liste des ToDos</h1>
+    {% for cle , element in app.session.get('todos') %}
+        <ul class="list-group">
+            <li class="list-group-item">{{ cle }} => {{ element }}</li>
+        </ul>
+    {% endfor %}
+</div>
+</body>
+</html>
